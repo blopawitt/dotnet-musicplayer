@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ZP10n2o+1ybMH012jxe3A8L3bX5ntdNLzSHFGIXJ3xY=",
+  "Source": "my-music-app",
+  "BasePath": "_content/my-music-app",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,34 @@
+@using MyMusicApp.Models
+@model IEnumerable<MyMusicApp.Models.Music>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Music Gallery</title>
+</head>
+<body>
+    <h1>Music Gallery</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var music in Model)
+            {
+                <tr>
+                    <td>@music.Id</td>
+                    <td>@music.Title</td>
+                    <td>@music.Artist</td>
+                    <td>@music.Genre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
