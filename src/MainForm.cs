@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using System.Linq; // Add this line
+using System.Linq;
 using System.Media;
 using System.Windows.Forms;
 using MyMusicApp.Models;
@@ -43,12 +43,14 @@ namespace MyMusicApp
                 {
                     var filePath = openFileDialog.FileName;
                     var fileName = Path.GetFileNameWithoutExtension(filePath);
+
                     var music = new Music
                     {
-                        Id = _musicService.FetchAllMusic().Count() + 1, // Update this line
+                        Id = _musicService.FetchAllMusic().Count() + 1,
                         Title = fileName,
                         Artist = "Unknown",
-                        Genre = "Unknown"
+                        Genre = "Unknown",
+                        FilePath = filePath // Save the file path
                     };
                     _musicService.SaveMusic(music);
                     RefreshMusicList();
@@ -62,10 +64,10 @@ namespace MyMusicApp
             {
                 var selectedMusic = listBoxMusic.SelectedItem.ToString();
                 var musicTitle = selectedMusic.Split(',')[1].Split(':')[1].Trim();
-                var music = _musicService.FetchAllMusic().FirstOrDefault(m => m.Title == musicTitle); // Update this line
+                var music = _musicService.FetchAllMusic().FirstOrDefault(m => m.Title == musicTitle);
                 if (music != null)
                 {
-                    var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{music.Title}.wav");
+                    var filePath = music.FilePath; // Use the saved file path
                     if (File.Exists(filePath))
                     {
                         _soundPlayer = new SoundPlayer(filePath);
